@@ -24,11 +24,15 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password'])
         ]);
 
-        $token = $user->createToken('myapp')->plainTextToken;
+        $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
             'success' => 'User registered successfully!',
-            ['user' => $user, 'token' => $token]
+            [
+                'user' => $user,
+                'access_token' => $token,
+                'token_type' => 'Bearer'
+            ]
         ], 201);
     }
 }
