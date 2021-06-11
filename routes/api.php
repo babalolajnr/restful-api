@@ -16,12 +16,13 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+//Authentication routes
+Route::post('/register', RegisterController::class)->name('register');
+Route::post('/login', LoginController::class)->name('login');
 
-Route::post('/register', RegisterController::class);
-Route::post('/login', LoginController::class);
-
-Route::middleware('auth:sanctum')->group(function () {
-    Route::patch('/update', [UserController::class, 'update']);
-    Route::get('/show', [UserController::class, 'show']);
-    Route::delete('/delete', [UserController::class, 'destroy']);
+//Authenticated routes
+Route::middleware('auth:sanctum')->name('user.')->group(function () {
+    Route::patch('/update', [UserController::class, 'update'])->name('update');
+    Route::get('/show', [UserController::class, 'show'])->name('show');
+    Route::delete('/delete', [UserController::class, 'destroy'])->name('delete');
 });
