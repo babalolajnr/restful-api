@@ -37,7 +37,12 @@ class UserController extends Controller
         $user = auth()->user();
         return response()->json([$user], 200);
     }
-
+    
+    /**
+     * Delete user
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function destroy()
     {
         $user = User::find(auth()->user()->id);
