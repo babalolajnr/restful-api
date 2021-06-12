@@ -1,7 +1,7 @@
 ## About
-This is a Restful API implemented with Laravel 8
+This is a Restful API implemented with Laravel 8 and Laravel Sanctum package is used to offer token based authorization
 
-## APIs
+## API Endpoints
 
 Register User
 ```
